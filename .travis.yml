@@ -12,7 +12,7 @@ after_success:
   - docker build -t desmonduz/fibcalc-server ./server
   - docker build -t desmonduz/fibcalc-worker ./worker
   # login to docker cli
-  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - docker login --password $DOCKER_PASSWORD -u $DOCKER_ID
   # take images and push to docker hub
   - docker push desmonduz/fibcalc-client
   - docker push desmonduz/fibcalc-worker
