@@ -1,0 +1,21 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t desmonduz/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true desmonduz/react-test npm test
+
+after_success:
+  - docker build -t desmonduz/fibcalc-client ./client
+  - docker build -t desmonduz/fibcalc-nginx ./nginx
+  - docker build -t desmonduz/fibcalc-server ./server
+  - docker build -t desmonduz/fibcalc-worker ./worker
+  # login to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # take images and push to docker hub
+  - docker push desmonduz/fibcalc-client
+  - docker push desmonduz/fibcalc-worker
+  - docker push desmonduz/fibcalc-server
+  - docker push desmonduz/fibcalc-nginx
