@@ -6,7 +6,6 @@ before_install:
   - docker build -t desmonduz/react-test -f ./client/Dockerfile.dev ./client
 script:
   - docker run -e CI=true desmonduz/react-test npm test
-
 after_success:
   - docker build -t desmonduz/fibcalc-client ./client
   - docker build -t desmonduz/fibcalc-nginx ./nginx
