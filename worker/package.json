@@ -1,0 +1,16 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon"
+  },
+  "author": "desmonduz",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "*",
+    "redis": "*"
+  }
+}
