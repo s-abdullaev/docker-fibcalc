@@ -18,3 +18,16 @@ after_success:
   - docker push desmonduz/fibcalc-worker
   - docker push desmonduz/fibcalc-server
   - docker push desmonduz/fibcalc-nginx
+deploy:
+  edge: true
+  region: us-east-2
+  app: docker-fibcalc
+  env: DockerFibcalc-env
+  bucket_name: elasticbeanstalk-us-east-2-241252774995
+  bucket_path: docker-fibcalc
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: $AWS_ACCESS_SECRET
+  on:
+    branch: master
