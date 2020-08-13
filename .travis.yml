@@ -27,7 +27,6 @@ deploy:
   bucket_path: docker-fibcalc
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: 
-    secure: $AWS_ACCESS_SECRET
+  secret_access_key: $AWS_ACCESS_SECRET
   on:
     branch: master
